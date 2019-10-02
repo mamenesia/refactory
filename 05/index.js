@@ -50,3 +50,26 @@ const data = [
 		items: [{ id: 24, name: 'Sapu Lidi', qty: 3, price: 13200 }]
 	}
 ]
+
+getFebData = input => {
+	let result = input.filter(data => data.created_at.slice(0, 7) === '2018-02')
+	console.log(result)
+	return result
+}
+
+getTotalBuyAri = input => {
+	let ariData = input.filter(data => data.customer.name === 'Ari')
+
+	let ariItems = []
+	ariData.map(data => {
+		data.items.map(item => ariItems.push(item))
+	})
+
+	let ariTotal = 0
+	ariItems.map(item => (ariTotal += item.price))
+	console.log(ariTotal)
+	return ariTotal
+}
+
+getFebData(data)
+getTotalBuyAri(data)
